@@ -27,11 +27,16 @@ RSpec.describe 'The student show page' do
     @student_course10 = StudentCourse.create!(student: @student6, course: @course2)
     visit "/students/#{@student1.id}"
   end
+
   it 'lists all of that students courses and no other courses nor other students' do
     expect(page).to have_content(@course1.name)
     expect(page).to have_content(@course2.name)
     expect(page).to_not have_content(@course3.name)
     expect(page).to_not have_content(@course5.name)
     expect(page).to_not have_content(@student2.name)
+  end
+
+  it 'displays how many students are in each of courses' do
+    expect(page).to have_content(@course1.name)
   end
 end
