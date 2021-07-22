@@ -36,6 +36,12 @@ RSpec.describe 'The courses index page' do
       expect(page).to have_content(@course5.name)
       expect(page).to have_content(@course1.students.length)
       expect(page).to have_content(@course2.students.length)
+  end
 
+  it 'lists the courses in alphabetical order' do
+    expect(@course3.name).to appear_before(@course2.name)
+    expect(@course2.name).to appear_before(@course5.name)
+    expect(@course5.name).to appear_before(@course1.name)
+    expect(@course1.name).to appear_before(@course4.name)
   end
 end
