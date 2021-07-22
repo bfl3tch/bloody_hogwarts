@@ -10,15 +10,7 @@ RSpec.describe 'The students index page' do
     @student6 = Student.create!(name: 'Pansy Parkinson', age: 11, house: 'Slytherin')
     visit '/students'
   end
-#   User Story 1 of 4
-#
-# As a visitor,
-# When I visit '/students',
-# I see a list of students with the following information:
-# -Name
-# -Age
-# -House
-# (e.g. "Name: Casseopia Black, Age: 14, House: Slytherin")
+
   it 'lists all the students and their attributes' do
     expect(page).to have_content(@student1.name)
     expect(page).to have_content(@student4.age)
@@ -27,5 +19,13 @@ RSpec.describe 'The students index page' do
 
   it 'lists the average age of all the students' do
     expect(page).to have_content("Average student age: 13")
+  end
+
+  it 'orders the students alphabetically by first name' do
+    expect(@student2.name).to appear_before(@student5.name)
+    expect(@student5.name).to appear_before(@student1.name)
+    expect(@student1.name).to appear_before(@student4.name)
+    expect(@student4.name).to appear_before(@student6.name)
+    expect(@student6.name).to appear_before(@student3.name)
   end
 end

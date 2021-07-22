@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Student, type: :model do
   before(:each) do
+    Student.destroy_all
     @student1 = Student.create!(name: 'Harry Potter', age: 10, house: 'Gryffindor')
     @student2 = Student.create!(name: 'Cedric Diggory', age: 14, house: 'Hufflepuff')
     @student3 = Student.create!(name: 'Ron Weasley', age: 12, house: 'Gryffindor')
@@ -24,7 +25,14 @@ RSpec.describe Student, type: :model do
   describe 'class methods' do
     describe '::average_age' do
       it 'determines the average age of all the students' do
-        expect(Student.average_age).to eq(13)
+        expect(Student.average_age).to eq(11)
+      end
+    end
+
+    describe '::alphabatize' do
+      it 'alphabatizes the students' do
+        expected = [@student2, @student5, @student1, @student4, @student6, @student3]
+        expect(Student.alphabatize).to eq(expected)
       end
     end
   end

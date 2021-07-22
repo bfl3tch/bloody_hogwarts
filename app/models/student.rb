@@ -8,4 +8,8 @@ class Student < ApplicationRecord
   def self.average_age
     average(:age).to_i
   end
+
+  def self.alphabatize
+    order(:name)
+  end
 end
