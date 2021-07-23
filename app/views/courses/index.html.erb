@@ -1,3 +1,6 @@
 <% @courses.each do |course| %>
   <h3><%= course.name  %>: <%= course.students.count  %></h3>
+  <% course.students.alphabatize.each do |student| %>
+    - <%= student.name %><br/>
+  <% end %>
 <% end %>

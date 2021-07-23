@@ -44,4 +44,8 @@ RSpec.describe 'The courses index page' do
     expect(@course5.name).to appear_before(@course1.name)
     expect(@course1.name).to appear_before(@course4.name)
   end
+
+  it 'lists each courses students in alphabetical order' do
+    save_and_open_page
+  end
 end
